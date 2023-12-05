@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ==================== FAVICON ==================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='images/favicon/site.webmanifest') }}">
+
+    <!-- ==================== REMIXICONS ==================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+
+    <!-- ==================== SWIPER CSS ==================== -->
+    <link rel="stylesheet" href="">
+
+    <!-- ==================== CSS ==================== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+
+    <title>Redline</title>
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="" class="nav__logo">
+                <img src="{{ url_for('static', filename='images/medium-logo.png') }}" alt="" width="100">
+            </a>
+
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link">
+                            <i class="ri-home-line"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#featured" class="nav__link">
+                            <i class="ri-book-3-line"></i>
+                            <span>Featured</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#discount" class="nav__link">
+                            <i class="ri-price-tag-3-line"></i>
+                            <span>Discount</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#new" class="nav__link">
+                            <i class="ri-bookmark-line"></i>
+                            <span>New Books</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#testimonial" class="nav__link">
+                            <i class="ri-message-3-line"></i>
+                            <span>Testimonial</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="nav__actions">
+                <!-- Search button -->
+                <i class="ri-search-line search-button" id="search-button"></i>
+
+                <!-- Login button -->
+                <i class="ri-customer-service-line login-button" id="login-button"></i>
+
+                <!-- Theme button -->
+                <i class="ri-moon-line change-theme" id="theme-button"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== SEARCH ==================== -->
+    <div class="search" id="search-content">
+        <form action="" class="search__form">
+            <i class="ri-search-line search__icon"></i>
+            <input type="search" placeholder="What are you looking for?" class="search__input">
+        </form>
+
+        <i class="ri-close-line search__close" id="search-close"></i>
+    </div>
+
+    <!-- ==================== LOGIN ==================== -->
+    <div class="login grid" id="login-content">
+        <form action="" class="login__form grid">
+            <h3 class="login__title">Log In</h3>
+
+            <div class="login__group grid">
+                <div>
+                    <label for="login-email" class="login__label">Email</label>
+                    <input type="email" placeholder="Write your phone" id="login-email" class="login__input">
+                </div>
+
+                <div>
+                    <label for="login-pass" class="login__label">Password</label>
+                    <input type="email" placeholder="Enter your message" id="login-pass" class="login__input">
+                </div>
+            </div>
+            <div>
+                <span class="login__signup">
+                    You do not have an account? <a href="#">Sign up</a>
+                </span>
+
+                <a href="" class="login__forgot">
+                    You forgot your password?
+                </a>
+
+                <button type="submit" class="login__button button">
+                    Send
+                </button>
+            </div>
+
+        </form>
+
+        <i class="ri-close-line login__close" id="login-close"></i>
+    </div>
+
+    <!-- ==================== MAIN ==================== -->
+    <main class="main">
+        <!-- ==================== HOME ==================== -->
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <h1 class="home__title">Ideas <br>
+                        Illuminating <span style="color: red;">Lines</span> 
+                    </h1>
+                    <p class="home__description">
+                        В каждом пикселе могущественное волшебство, 
+                        в каждой строке кода - загадочные тени истории. 
+                        Давайте вместе покажем вселенной ваш уникальный мир."
+                    </p>
+
+                    <a href="#" class="button">Explore Now</a>
+                </div>
+                <div class="home__images">
+                    <div class="home__swiper swiper">
+                        <div>
+                            {% for images in context %}
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </section>
+
+        <!-- ==================== SERVICES ==================== -->
+        <section class="service section">
+
+        </section>
+
+        <!-- ==================== FEATURED ==================== -->
+        <section class="featured section" id="featured">
+
+        </section>
+
+        <!-- ==================== DISCOUNT ==================== -->
+        <section class="discount section" id="discount">
+
+        </section>
+
+        <!-- ==================== NEW BOOKS ==================== -->
+        <section class="new section" id="new">
+
+        </section>
+
+        <!-- ==================== JOIN ==================== -->
+        <section class="join section">
+
+        </section>
+
+        <!-- ==================== TESTIMONIAL ==================== -->
+        <section class="testimonial section" id="testimonial">
+
+        </section>
+    </main>
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer"></footer>
+
+    <!-- ==================== SCROLL UP ==================== -->
+    <!-- ======================== SCROLLREVEAL ======================== -->
+    <script></script>
+
+    <!-- ======================== SWIPER JS ======================== -->
+    <script></script>
+
+    <!-- ======================== MAIN JS ======================== -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <h1>Hello</h1>
+</body>
+</html>
