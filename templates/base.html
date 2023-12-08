@@ -147,7 +147,14 @@
                 <div class="home__images">
                     <div class="home__swiper swiper">
                         <div>
-                            {% for images in context %}
+                            {% for image in image_names %}
+                                <article class="home__article">
+                                    <img src="{{ url_for('get_image', filename='' + image) }}" alt="image" class="home__img">
+                                </article>
+                            {% endfor %}
+                            <article class="home__article">
+                                <img src="{{ url_for('get_image', filename='main-image1.png')}}" alt="image" class="home__img">
+                            </article>
                         </div>
                     </div>
                 </div>
