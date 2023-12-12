@@ -56,5 +56,5 @@ if __name__ == '__main__':
         db.create_all()
     app.run(debug=True)
 
-#timecode 33:20
+#timecode 46:47
 #https://www.youtube.com/watch?v=b7eJQSHhuO8&list=PL07efmqYWHZ_cxA1GvuXQMA-VYk8dhuiv&index=3
