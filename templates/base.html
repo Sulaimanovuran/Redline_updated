@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
 
     <!-- ==================== SWIPER CSS ==================== -->
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/swiper-bundle.min.css') }}">
 
     <!-- ==================== CSS ==================== -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
@@ -146,15 +146,12 @@
                 </div>
                 <div class="home__images">
                     <div class="home__swiper swiper">
-                        <div>
+                        <div class="swiper-wrapper">
                             {% for image in image_names %}
-                                <article class="home__article">
+                                <article class="home__article swiper-slide">
                                     <img src="{{ url_for('get_image', filename='' + image) }}" alt="image" class="home__img">
                                 </article>
                             {% endfor %}
-                            <article class="home__article">
-                                <img src="{{ url_for('get_image', filename='main-image1.png')}}" alt="image" class="home__img">
-                            </article>
                         </div>
                     </div>
                 </div>
@@ -163,12 +160,32 @@
 
         <!-- ==================== SERVICES ==================== -->
         <section class="service section">
+            <div class="services__container container grid">
+              
+                    <article class="services__card">
+                        <i class="ri-quill-pen-fill"></i>
+                        <h3 class="services__title">Awesome Design</h3>
+                        <p class="services_description">Create your design</p>
+                    </article>
 
+                    <article class="services__card">
+                        <i class="ri-code-s-slash-line"></i>
+                        <h3 class="services__title">IT Products</h3>
+                        <p class="services_description">Interesting IT solutions</p>
+                    </article>
+
+                    <article class="services__card">
+                        <i class="ri-customer-service-2-fill"></i>
+                        <h3 class="services__title">24/7 Suport</h3>
+                        <p class="services_description">Call us anytime </p>
+                    </article>
+               
+            </div>
         </section>
 
         <!-- ==================== FEATURED ==================== -->
         <section class="featured section" id="featured">
-
+            
         </section>
 
         <!-- ==================== DISCOUNT ==================== -->
@@ -199,10 +216,9 @@
     <script></script>
 
     <!-- ======================== SWIPER JS ======================== -->
-    <script></script>
+    <script src="{{ url_for('static', filename='js/swiper-bundle.min.js')}}"></script>
 
     <!-- ======================== MAIN JS ======================== -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <h1>Hello</h1>
 </body>
 </html>
