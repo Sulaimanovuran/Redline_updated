@@ -185,7 +185,34 @@
 
         <!-- ==================== FEATURED ==================== -->
         <section class="featured section" id="featured">
-            
+            <h2 class="section_title">
+                Featured Products
+            </h2>
+
+            <div class="featured__container container">
+                <div class="featured__swiper">
+                    <div>
+                        {% for featured in featureds %}
+                            <article class="featured__card">
+                                <img src="{{ url_for('images', filename='featured/' + featured.filename) }}" alt="image" class="featured__img">
+                                <h2 class="featured__title">{{ featured.title }}</h2>
+                                <div class="featured__prices">
+                                    <span class="featured__discount">{{featured.discount}}</span>
+                                    <span class="featured__price">{{ featured.price }}</span>
+                                </div>
+
+                                <button class="button">Order</button>
+
+                                <div class="featured__actions">
+                                    <button><i class="ri-search-line"></i></button>
+                                    <button><i class="ri-heart-3-line"></i></button>
+                                    <button><i class="ri-eye-line"></i></button>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- ==================== DISCOUNT ==================== -->

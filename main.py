@@ -27,8 +27,10 @@ def upload():
     if file:
         filename = os.path.join('images/featured/', file.filename)
         file.save(filename)
-
-        new_image = Featured(filename=file.filename)
+        title = request.form['title']
+        discount = request.form['discount']
+        price = request.form['price']
+        new_image = Featured(filename=file.filename, title=title, discount=discount, price=price)
         db.session.add(new_image)
         db.session.commit()
 
@@ -38,8 +40,8 @@ def upload():
 @app.route('/')
 def index():
     image_names = get_image_names()
-    
-    return render_template('index.html', image_names=image_names) #['main-image1.png','main-image2.png','main-image3.png','main-image4.png']
+    featureds = Featured.query.all()
+    return render_template('index.html', image_names=image_names, featureds=featureds) #['main-image1.png','main-image2.png','main-image3.png','main-image4.png']
 
 @app.route('/images/<path:filename>')
 def get_image(filename):
