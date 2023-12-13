@@ -1,4 +1,4 @@
-<h1>Сайт для консалтинговой компании <span style="{color:red}>Redline</span></h1>
+<h1>Сайт для консалтинговой компании <span style="{color:red}">Redline</span></h1>
 
 
 <h3>Размеры картинок<h3><br>
