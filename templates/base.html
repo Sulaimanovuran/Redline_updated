@@ -190,11 +190,11 @@
             </h2>
 
             <div class="featured__container container">
-                <div class="featured__swiper">
-                    <div>
+                <div class="featured__swiper swiper">
+                    <div class="swiper-wrapper">
                         {% for featured in featureds %}
-                            <article class="featured__card">
-                                <img src="{{ url_for('images', filename='featured/' + featured.filename) }}" alt="image" class="featured__img">
+                            <article class="featured__card swiper-slide">
+                                <img src="{{ url_for('get_image', filename='featured/' + featured.filename) }}" alt="image" class="featured__img">
                                 <h2 class="featured__title">{{ featured.title }}</h2>
                                 <div class="featured__prices">
                                     <span class="featured__discount">{{featured.discount}}</span>
@@ -210,6 +210,14 @@
                                 </div>
                             </article>
                         {% endfor %}
+                    </div>
+
+                    <div class="swiper-button-prev">
+                        <i class="ri-arrow-left-s-line"></i>
+                    </div>
+
+                    <div class="swiper-button-next">
+                        <i class="ri-arrow-right-s-line"></i>
                     </div>
                 </div>
             </div>

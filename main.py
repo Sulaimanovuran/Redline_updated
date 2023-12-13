@@ -11,8 +11,10 @@ class Featured(db.Model):
     filename = db.Column(db.String(255), nullable=False, unique=True)
     title = db.Column(db.String(255), nullable=False)
     discount = db.Column(db.String(255), nullable=False)
-    price = db.Column(db.String(255), nullable=False, unique=True)
+    price = db.Column(db.String(255), nullable=False)
 
+    def __str__(self) -> str:
+        return self.title
 
 @app.route('/upload', methods=['GET','POST'])
 def upload():
