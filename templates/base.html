@@ -185,7 +185,7 @@
 
         <!-- ==================== FEATURED ==================== -->
         <section class="featured section" id="featured">
-            <h2 class="section_title">
+            <h2 class="section__title">
                 Featured Products
             </h2>
 
@@ -224,13 +224,36 @@
         </section>
 
         <!-- ==================== DISCOUNT ==================== -->
-        <section class="discount section" id="discount">
+        <section class="new section" id="new">
+            <div class="discount__container container grid">
+                <div class="discount__data">
+                    <h2 class="discount__title section__title">
+                        О <span style="color: red;">R</span>ed<span style="color: red;">l</span>ine
+                    </h2>
+                    <p class="discount__description">
+                        Redline - это компания, которая создает дизайн, 
+                        логотипы и сайты для любого бизнеса. 
+                        Мы знаем, как сделать ваш визуальный образ уникальным и привлекательным, 
+                        чтобы выделяться среди конкурентов.
+                    </p>
 
+                    <a href="" class="button">Shop Now</a>
+                </div>
+
+                <div class="discount__images">
+                    <img src="{{ url_for('static', filename='images/discount_image1.png') }}" alt="image" class="discount__img-1">
+                    <img src="{{ url_for('static', filename='images/discount_image2.png') }}" alt="image" class="discount__img-2">
+                </div>
+
+            </div>
         </section>
 
-        <!-- ==================== NEW BOOKS ==================== -->
-        <section class="new section" id="new">
 
+        <!-- ==================== NEW BOOKS ==================== -->
+        <section class="discount section" id="discount">
+            <h2 class="section__title">
+                Our wor
+            </h2>
         </section>
 
         <!-- ==================== JOIN ==================== -->
