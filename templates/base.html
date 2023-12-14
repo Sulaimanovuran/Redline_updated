@@ -252,8 +252,58 @@
         <!-- ==================== NEW BOOKS ==================== -->
         <section class="discount section" id="discount">
             <h2 class="section__title">
-                Our wor
+                Our works
             </h2>
+
+            <div class="new__container container">
+                <div class="new__swiper swiper">
+                    <div class="swiper-wrapper">
+                    {% for work in works %}
+                        <a href="#" class="new__card swiper-slide">
+                            <img src="{{ url_for('get_image', filename='works/' + work.filename) }}" alt="image" class="new__img">
+
+                            <div>
+                                <h2 class="new__title">{{ work.title }}</h2>
+                                <div class="new__prices">
+                                    <span class="new__discount"> {{ work.discount }}</span>
+                                    <span class="new__price">{{ work.price }}</span>
+                                </div>
+
+                                <div class="new__stars">
+                                {% for i in range(work.stars) %}
+                                    <i class="ri-star-fill"></i>
+                                {% endfor %}
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                    </div>
+                </div>
+
+                <div class="new__swiper swiper">
+                    <div class="swiper-wrapper">
+                    {% for work in works|sort(attribute='filename', reverse=True) %}
+                        <a href="#" class="new__card swiper-slide">
+                            <img src="{{ url_for('get_image', filename='works/' + work.filename) }}" alt="image" class="new__img">
+
+                            <div>
+                                <h2 class="new__title">{{ work.title }}</h2>
+                                <div class="new__prices">
+                                    <span class="new__discount"> {{ work.discount }}</span>
+                                    <span class="new__price">{{ work.price }}</span>
+                                </div>
+
+                                <div class="new__stars">
+                                {% for i in range(work.stars) %}
+                                    <i class="ri-star-fill"></i>
+                                {% endfor %}
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- ==================== JOIN ==================== -->

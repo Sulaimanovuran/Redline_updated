@@ -15,6 +15,19 @@ class Featured(db.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+
+class EndWork(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    filename = db.Column(db.String(255), nullable=False, unique=True)
+    title = db.Column(db.String(255), nullable=False)
+    discount = db.Column(db.String(255), nullable=False)
+    price = db.Column(db.String(255), nullable=False)
+    stars = db.Column(db.Integer)
+
+    def __str__(self) -> str:
+        return self.title
+
 
 @app.route('/upload', methods=['GET','POST'])
 def upload():
@@ -38,12 +51,38 @@ def upload():
 
         return redirect(url_for('index'))
     
+@app.route('/works', methods=['GET','POST'])
+def upload_works():
+    if 'file' not in request.files:
+        return render_template('works.html')
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return redirect(request.url)
+
+    if file:
+        filename = os.path.join('images/works/', file.filename)
+        file.save(filename)
+        
+        title = request.form['title']
+        discount = request.form['discount']
+        price = request.form['price']
+        stars = int(request.form['stars']) if not isinstance(request.form['stars'], int) else request.form['stars']
+        
+        new_image = EndWork(filename=file.filename, title=title, discount=discount, price=price, stars=stars)
+        db.session.add(new_image)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+    
 
 @app.route('/')
 def index():
     image_names = get_image_names()
     featureds = Featured.query.all()
-    return render_template('index.html', image_names=image_names, featureds=featureds) #['main-image1.png','main-image2.png','main-image3.png','main-image4.png']
+    works = EndWork.query.all()
+    return render_template('index.html', image_names=image_names, featureds=featureds, works=works) #['main-image1.png','main-image2.png','main-image3.png','main-image4.png']
 
 @app.route('/images/<path:filename>')
 def get_image(filename):
@@ -60,5 +99,5 @@ if __name__ == '__main__':
         db.create_all()
     app.run(debug=True)
 
-#timecode 58:47
+#timecode 1:06:45
 #https://www.youtube.com/watch?v=b7eJQSHhuO8&list=PL07efmqYWHZ_cxA1GvuXQMA-VYk8dhuiv&index=3
