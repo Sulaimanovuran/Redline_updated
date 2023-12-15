@@ -32,7 +32,7 @@
             <div class="nav__menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="#home" class="nav__link">
+                        <a href="#home" class="nav__link active-link">
                             <i class="ri-home-line"></i>
                             <span>Home</span>
                         </a>
@@ -308,18 +308,163 @@
 
         <!-- ==================== JOIN ==================== -->
         <section class="join section">
+            <div class="join__container">
+                <img src="{{ url_for('static', filename='images/join-bg.jpg') }}" alt="image" class="join__bg">
 
+                <div class="join__data container grid">
+                    <h2 class="join__title section__title">
+                        Get a free consultation <br>
+                        For your company
+                    </h2>
+
+                    <form action="" class="join__form">
+                        <input type="email" placeholder="Enter phone" class="join__input">
+                        <button type="submit" class="join__button button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
         </section>
 
         <!-- ==================== TESTIMONIAL ==================== -->
         <section class="testimonial section" id="testimonial">
+            <h2 class="section__title">
+                Our craftsmen 
+            </h2>
 
+            <div class="testimonial__container container">
+                <div class="testimonial__swiper swiper">
+                    <div class="swiper-wrapper">
+                    {% for employee in employees %}
+                        <article class="testimonial__card swiper-slide">
+                            <img src="{{ url_for('get_image', filename='employee/' + employee.filename) }}" alt="image" class="testimonial__img">
+
+                            <h2 class="testimonial__title">{{ employee.title }}</h2>
+                            <p class="testimonial__description">{{ employee.description }}</p>
+
+                            <div class="testimonial__stars">
+                                {% for i in range(employee.stars) %}
+                                    <i class="ri-star-fill"></i>
+                                {% endfor %}
+                            </div>
+                        </article>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     <!-- ==================== FOOTER ==================== -->
-    <footer class="footer"></footer>
+    <footer class="footer">
+        <div class="footer__container container grid">
+            <div>
+                <a href="#" class="footer__logo">
+                    <img src="{{ url_for('static', filename='images/medium-logo.png') }}" alt="" width="100">
+                </a>
+
+                <p class="footer__description">
+                    Find and explore the best <br>
+                    Redline from all your <br>
+                    favorite designers.
+                </p>
+            </div>
+
+            <div class="footer__data grid">
+                <div>
+                    <h3 class="footer__title">About</h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Awards</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">FAQs</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">Privacy Policy</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">Terms of services</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">Company</h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Blogs</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">Community</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">Our team</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">Help center</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">Contact</h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <address class="footer__info">
+                                Турусбекова, 109/3 <br>
+                                8 этаж, 800 каб.
+                            </address>
+                        </li>
+
+                        <li>
+                            <address class="footer__info">
+                                redline@gmail.com <br>
+                                +996 707-123-456
+                            </address>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">Social</h3>
+
+                    <div class="footer__social">
+                        <a href="" target="-blank" class="footer__social-link">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+
+                        <a href="" target="-blank" class="footer__social-link">
+                            <i class="ri-telegram-line"></i>
+                        </a>
+
+                        <a href="" target="-blank" class="footer__social-link">
+                            <i class="ri-whatsapp-line"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <span class="footer__copy">
+            &#169; All Rights Reserved By Redline
+        </span>
+    </footer>
 
     <!-- ==================== SCROLL UP ==================== -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
     <!-- ======================== SCROLLREVEAL ======================== -->
     <script></script>
 
