@@ -139,5 +139,5 @@ if __name__ == '__main__':
         db.create_all()
     app.run(debug=True)
 
-#timecode 1:30:29
+#timecode 1:39:29
 #https://www.youtube.com/watch?v=b7eJQSHhuO8&list=PL07efmqYWHZ_cxA1GvuXQMA-VYk8dhuiv&index=3

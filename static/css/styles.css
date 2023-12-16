@@ -104,12 +104,47 @@ img {
 
 /* ==================== THEME ==================== */
 /* =============== Variables Dark Theme ============== */
-
+body.dark-theme{
+    --title-color: hsl(230, 48%, 85%);
+    --text-color: hsl(230, 16%, 70%);
+    --border-color: hsl(230, 12%, 18%);
+    --body-color: hsl(230, 12%, 8%);
+    --container-color: hsl(230, 12%, 12%);
+}
 
 /* ========
     Color changes in some parts of
     the website, in dark theme
 =========== */
+.dark-theme .shadow-header{
+    box-shadow: 0 -8px 32px hsla(0, 0%, 0%, .4);
+}
+
+.dark-theme .nav__menu{
+    box-shadow: 0 -8px 32px hsla(0, 0%, 0%, .4);
+}
+
+.dark-theme .scrollup{
+    box-shadow: 0 -8px 32px hsla(0, 0%, 0%, .4);
+}
+
+.dark-theme .search,
+.dark-theme .login{
+    background-color: hsla(230, 12%, 8%, .6);
+}
+
+.dark-theme::-webkit-scrollbar{
+    background-color: hsla(230, 16%, 15%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb{
+    background-color: hsla(230, 16%, 25%);
+}
+
+
+.dark-theme::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(161, 3, 3);
+}
 
 /* ==================== REUSABLE CSS CLASSES ==================== */
 .container {
@@ -804,9 +839,41 @@ img {
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
+@media screen and (max-width: 320px){
+    .container{
+        margin-inline: 1rem;
+    }
+
+    .nav__menu{
+        padding-inline: 3rem;
+    }
+
+    .discount__img-1m,
+    .discount__img-2{
+        width: 140px;
+    }
+
+    .new__card{
+        flex-direction: column;
+    }
+
+    .testimonial__card{
+        padding-inline: 1rem;
+    }
+
+    .footer__data{
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+    }
+}
+
 
 
 /* For medium devices */
-
+@media screen and (min-width: 450px){
+    .featured__card{
+        width: 290px
+    }
+}
 
 /* For large devices */
