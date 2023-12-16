@@ -41,28 +41,28 @@
                     <li class="nav__item">
                         <a href="#featured" class="nav__link">
                             <i class="ri-book-3-line"></i>
-                            <span>Featured</span>
+                            <span>Products</span>
                         </a>
                     </li>
 
                     <li class="nav__item">
                         <a href="#discount" class="nav__link">
                             <i class="ri-price-tag-3-line"></i>
-                            <span>Discount</span>
+                            <span>Our Works</span>
                         </a>
                     </li>
 
                     <li class="nav__item">
                         <a href="#new" class="nav__link">
                             <i class="ri-bookmark-line"></i>
-                            <span>New Books</span>
+                            <span>About</span>
                         </a>
                     </li>
 
                     <li class="nav__item">
                         <a href="#testimonial" class="nav__link">
                             <i class="ri-message-3-line"></i>
-                            <span>Testimonial</span>
+                            <span>Staff</span>
                         </a>
                     </li>
 
@@ -95,26 +95,26 @@
     <!-- ==================== LOGIN ==================== -->
     <div class="login grid" id="login-content">
         <form action="" class="login__form grid">
-            <h3 class="login__title">Log In</h3>
+            <h3 class="login__title">Leave request</h3>
 
             <div class="login__group grid">
                 <div>
-                    <label for="login-email" class="login__label">Email</label>
+                    <label for="login-email" class="login__label">Phone</label>
                     <input type="email" placeholder="Write your phone" id="login-email" class="login__input">
                 </div>
 
                 <div>
-                    <label for="login-pass" class="login__label">Password</label>
-                    <input type="email" placeholder="Enter your message" id="login-pass" class="login__input">
+                    <label for="login-pass" class="login__label">Message</label>
+                    <input type="text" placeholder="Enter your message" id="login-pass" class="login__input">
                 </div>
             </div>
             <div>
                 <span class="login__signup">
-                    You do not have an account? <a href="#">Sign up</a>
+                    Write your <a href="#">wishes</a>
                 </span>
 
                 <a href="" class="login__forgot">
-                    You forgot your password?
+                    And we'll do the rest
                 </a>
 
                 <button type="submit" class="login__button button">
@@ -139,7 +139,7 @@
                     <p class="home__description">
                         В каждом пикселе могущественное волшебство, 
                         в каждой строке кода - загадочные тени истории. 
-                        Давайте вместе покажем вселенной ваш уникальный мир."
+                        Давайте вместе покажем вселенной ваш уникальный мир!
                     </p>
 
                     <a href="#" class="button">Explore Now</a>
@@ -308,7 +308,7 @@
 
         <!-- ==================== JOIN ==================== -->
         <section class="join section">
-            <div class="join__container">
+            <div class="join__container" id="consult">
                 <img src="{{ url_for('static', filename='images/join-bg.jpg') }}" alt="image" class="join__bg">
 
                 <div class="join__data container grid">
@@ -465,11 +465,19 @@
         <i class="ri-arrow-up-line"></i>
     </a>
 
+    <script>
+        function scrollToButton() {
+            // Используйте JavaScript для прокрутки к кнопке
+            var button = document.getElementById('login-button');
+            button.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
     <!-- ======================== SCROLLREVEAL ======================== -->
-    <script></script>
+    <script src="{{ url_for('serve_js', filename='scrollreveal.min.js')}}"></script>
 
     <!-- ======================== SWIPER JS ======================== -->
-    <script src="static/js/swiper-bundle.min.js"></script>
+    <script src="{{ url_for('serve_js', filename='swiper-bundle.min.js') }}"></script>
 
     <!-- ======================== MAIN JS ======================== -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>

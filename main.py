@@ -2,7 +2,9 @@ from flask import Flask, render_template, send_from_directory, request, redirect
 import os
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
+app_dir = os.path.dirname(os.path.abspath(__file__))
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///redline.db'
 db=SQLAlchemy(app)
 
@@ -133,6 +135,15 @@ def get_image_names():
     root_dir = os.path.dirname(os.path.abspath(__file__))
     image_dir = os.path.join(root_dir, 'images')
     return [f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f)) if not f.startswith('.') and not f.startswith('h')]
+
+
+@app.route('/static/js/<path:filename>')
+def serve_js(filename):
+    # Постройте абсолютный путь к папке с JavaScript файлами
+    js_folder = os.path.join(app_dir, 'static', 'js')
+
+    # Используйте send_from_directory для отправки файла
+    return send_from_directory(js_folder, filename)
 
 if __name__ == '__main__':
     with app.app_context():
