@@ -23,12 +23,27 @@ if(searchClose){
 /* ==================== LOGIN ====================*/
 const loginButton = document.getElementById('login-button'),
       loginClose = document.getElementById('login-close'),
-      loginContent = document.getElementById('login-content')
+      loginContent = document.getElementById('login-content'),
+      exploreButton = document.getElementById('explore-button'),
+      discountButton = document.getElementById('discount-button')
+
 
 /*===== LOGIN SHOW =====*/
 /* Validate if constant exists */
 if(loginButton){
     loginButton.addEventListener('click', () =>{
+        loginContent.classList.add('show-login')
+    })
+}
+
+if(exploreButton){
+    exploreButton.addEventListener('click', () =>{
+        loginContent.classList.add('show-login')
+    })
+}
+
+if(discountButton){
+    discountButton.addEventListener('click', () =>{
         loginContent.classList.add('show-login')
     })
 }

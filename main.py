@@ -1,11 +1,16 @@
-from flask import Flask, render_template, send_from_directory, request, redirect, url_for
+from flask import Flask, render_template, send_from_directory, request, redirect, url_for, flash
 import os
 from flask_sqlalchemy import SQLAlchemy
+import telebot
 
 app = Flask(__name__, static_url_path='/static')
 app_dir = os.path.dirname(os.path.abspath(__file__))
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///redline.db'
+app.config['SECRET_KEY'] = '4LceOr3wdHDusCXt6bzioyK8f12NXCcvXGhIP0XgPRm6GGHlWhP8dA'
+bot_token = '6926337764:AAFHR2riRBsBtItfc5M_fC-C92_mtuUX5g4'
+bot = telebot.TeleBot(bot_token)
+
 db=SQLAlchemy(app)
 
 class Featured(db.Model):
@@ -144,6 +149,42 @@ def serve_js(filename):
 
     # Используйте send_from_directory для отправки файла
     return send_from_directory(js_folder, filename)
+
+def send_to_telegram(chat_id, message_text):
+    bot.send_message(chat_id, message_text)
+
+
+@app.route('/submit_form_bot', methods=['GET', 'POST'])
+def submit_form_bot():
+    if request.method == 'POST':
+        try:
+            phone = request.form['phone']
+            message = request.form['message']
+            chat_id = '1022475729'
+            
+            # Отправка данных в телеграм
+            send_to_telegram(chat_id, f'Новая заявка:\nтел:{phone}\nсообщение:{message}')
+            flash('Успешно отправлено', 'success')
+        except:
+            flash('Успешно отправлено', 'error')
+        return redirect(url_for('index'))
+
+
+@app.route('/consult_form_bot', methods=['GET', 'POST'])
+def consult_form_bot():
+    if request.method == 'POST':
+        try:
+            phone = request.form['phone']
+            chat_id = '1022475729'
+            
+            # Отправка данных в телеграм
+            send_to_telegram(chat_id, f'Новая заявка на консультацию:\nтел:{phone}')
+            flash('Успешно отправлено', 'success')
+        except:
+            flash('Успешно отправлено', 'error')
+        return redirect(url_for('index'))
+
+
 
 if __name__ == '__main__':
     with app.app_context():

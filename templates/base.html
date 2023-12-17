@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <!-- ==================== FAVICON ==================== -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon/favicon-32x32.png') }}">
@@ -94,23 +93,28 @@
 
     <!-- ==================== LOGIN ==================== -->
     <div class="login grid" id="login-content">
-        <form action="" class="login__form grid">
+        <form action="/submit_form_bot" class="login__form grid" method="post">
+            {% for cat, msg in get_flashed_messages(True) %}
+            <div class="flash-container">
+                <div class="flash-message flash-{{ cat }}">{{msg}}</div>
+            </div>
+            {% endfor %}
             <h3 class="login__title">Leave request</h3>
 
             <div class="login__group grid">
                 <div>
                     <label for="login-email" class="login__label">Phone</label>
-                    <input type="email" placeholder="Write your phone" id="login-email" class="login__input">
+                    <input type="text" placeholder="Write your phone" id="login-email" pattern="[0-9+]{10,}" title="Только цифры и символ '+', минимум 10 символов" class="login__input" name="phone">
                 </div>
 
                 <div>
                     <label for="login-pass" class="login__label">Message</label>
-                    <input type="text" placeholder="Enter your message" id="login-pass" class="login__input">
+                    <input type="text" placeholder="Enter your message" id="login-pass" class="login__input" name="message">
                 </div>
             </div>
             <div>
                 <span class="login__signup">
-                    Write your <a href="#">wishes</a>
+                    Write your wishes
                 </span>
 
                 <a href="" class="login__forgot">
@@ -142,7 +146,7 @@
                         Давайте вместе покажем вселенной ваш уникальный мир!
                     </p>
 
-                    <a href="#" class="button">Explore Now</a>
+                    <a href="#" class="button" id="explore-button">Explore Now</a>
                 </div>
                 <div class="home__images">
                     <div class="home__swiper swiper">
@@ -197,11 +201,11 @@
                                 <img src="{{ url_for('get_image', filename='featured/' + featured.filename) }}" alt="image" class="featured__img">
                                 <h2 class="featured__title">{{ featured.title }}</h2>
                                 <div class="featured__prices">
-                                    <span class="featured__discount">{{featured.discount}}</span>
+                                    <span class="featured__discount"></span>
                                     <span class="featured__price">{{ featured.price }}</span>
                                 </div>
 
-                                <button class="button">Order</button>
+                                <button class="button">{{featured.discount}}</button>
 
                                 <div class="featured__actions">
                                     <button><i class="ri-search-line"></i></button>
@@ -237,7 +241,7 @@
                         чтобы выделяться среди конкурентов.
                     </p>
 
-                    <a href="" class="button">Shop Now</a>
+                    <a href="#" class="button" id="discount-button">Shop Now</a>
                 </div>
 
                 <div class="discount__images">
@@ -317,9 +321,14 @@
                         For your company
                     </h2>
 
-                    <form action="" class="join__form">
-                        <input type="email" placeholder="Enter phone" class="join__input">
-                        <button type="submit" class="join__button button">Subscribe</button>
+                    <form action="/consult_form_bot" class="join__form" method="post">
+                        {% for cat, msg in get_flashed_messages(True) %}
+                        <div class="flash-container">
+                            <div class="flash-message flash-{{ cat }}">{{msg}}</div>
+                        </div>
+                        {% endfor %}
+                        <input type="text" placeholder="Enter phone" class="join__input" pattern="[0-9+]{10,}" title="Только цифры и символ '+', минимум 10 символов" name="phone">
+                        <button type="submit" class="join__button button">Get</button>
                     </form>
                 </div>
             </div>

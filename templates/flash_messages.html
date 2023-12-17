@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Messages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .flash-container {
+            max-width: 400px;
+            margin: 20px;
+        }
+
+        .flash-message {
+            padding: 16px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: opacity 0.5s ease;
+        }
+
+        .flash-success {
+            background-color: #28a745;
+        }
+
+        .flash-error {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="flash-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">
+                        <span>{{ message }}</span>
+                        <button onclick="this.parentElement.style.opacity='0'; setTimeout(function(){ this.parentElement.style.display='none'; }, 500);">
+                            &times;
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

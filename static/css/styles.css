@@ -837,6 +837,41 @@ body.dark-theme{
     bottom: 6rem;
 }
 
+/* flash_messages.css */
+
+.flash-container {
+    max-width: 400px;
+    margin: 20px;
+}
+
+.flash-message {
+    padding: 16px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+}
+
+.flash-success {
+    background-color: #28a745;
+}
+
+.flash-error {
+    background-color: #dc3545;
+}
+
+.flash-message button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font-size: 16px;
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 320px){
