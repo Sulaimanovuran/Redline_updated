@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Panel{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('admin_main_images') }}">Main Images</a></li>
+            <li><a href="{{ url_for('admin_main_text') }}">Main Text</a></li>
+            <li><a href="{{ url_for('admin_featured') }}">Featured</a></li>
+            <li><a href="{{ url_for('admin_end_work') }}">End Work</a></li>
+            <li><a href="{{ url_for('admin_employee') }}">Employee</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

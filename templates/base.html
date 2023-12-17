@@ -153,7 +153,7 @@
                         <div class="swiper-wrapper">
                             {% for image in image_names %}
                                 <article class="home__article swiper-slide">
-                                    <img src="{{ url_for('get_image', filename='' + image) }}" alt="image" class="home__img">
+                                    <img src="{{ url_for('get_image2', filename='' + image.filename) }}" alt="image" class="home__img">
                                 </article>
                             {% endfor %}
                         </div>
@@ -190,7 +190,7 @@
         <!-- ==================== FEATURED ==================== -->
         <section class="featured section" id="featured">
             <h2 class="section__title">
-                Featured Products
+                Select Your Product
             </h2>
 
             <div class="featured__container container">

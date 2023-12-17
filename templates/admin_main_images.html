@@ -1,0 +1,23 @@
+{% extends 'admin_base.html' %}
+
+{% block title %}Main Images Admin{% endblock %}
+
+{% block content %}
+    <h1>Main Images Admin</h1>
+
+    <form method="post" action="{{ url_for('admin_main_images') }}" enctype="multipart/form-data">
+        <label for="filename">Filename:</label>
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Add Image</button>
+    </form>
+
+    <ul>
+        {% for image in main_images %}
+            <li>
+                <img src="{{ url_for('get_image2', filename='' + image.filename) }}" alt="{{ image.filename }} thumbnail" style="max-width: 50px; max-height: 50px;">
+                {{ image.filename }}
+                <a href="{{ url_for('delete_main_image', image_id=image.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
