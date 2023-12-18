@@ -1,0 +1,91 @@
+{% extends 'admin_base.html' %}
+
+{% block title %}Main Images Admin{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write Main Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #e74c3c;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Write Main Text</h1>
+    <h3>Всего должно быть только по одному!!!</h3>
+    <ul>
+        <li>title up - верхнее слово. Пример: Ideas</li>
+        <li>title down - след.строка. Пример: Illuminating</li>
+        <li>title red – слово которое будет выделено красным. Пример: Lines</li>
+        <li>description - описание снизу. Пример: В каждом пикселе ...</li>
+    </ul>
+    <form action="{{ url_for('admin_main_text') }}" method="post" enctype="multipart/form-data">
+        <input type="text" name="title_up" placeholder="title up" required>
+        <input type="text" name="title_down" placeholder="title up" required>
+        <input type="text" name="title_red" placeholder="title red" required>
+        <input type="text" name="description" placeholder="description" required>
+        <button type="submit">Write</button>
+    </form>
+
+    <ul>
+        {% for text in main_texts %}
+            <li>
+                {{text.id}}. {{ text.title_up }}
+                <a href="{{ url_for('delete_main_text', text_id=text.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <p><a href="{{ url_for('index') }}">Back to Site</a></p>
+</body>
+</html>
+{% endblock %}

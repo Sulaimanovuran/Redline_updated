@@ -137,16 +137,16 @@
         <section class="home section" id="home">
             <div class="home__container container grid">
                 <div class="home__data">
-                    <h1 class="home__title">Ideas <br>
-                        Illuminating <span style="color: red;">Lines</span> 
+                {% for text in main_texts %}
+                    <h1 class="home__title">{{text.title_up}} <br>
+                        {{text.title_down}} <span style="color: red;">{{text.title_red}}</span> 
                     </h1>
                     <p class="home__description">
-                        В каждом пикселе могущественное волшебство, 
-                        в каждой строке кода - загадочные тени истории. 
-                        Давайте вместе покажем вселенной ваш уникальный мир!
+                        {{text.description}}
                     </p>
 
                     <a href="#" class="button" id="explore-button">Explore Now</a>
+                {% endfor %}
                 </div>
                 <div class="home__images">
                     <div class="home__swiper swiper">
@@ -198,7 +198,7 @@
                     <div class="swiper-wrapper">
                         {% for featured in featureds %}
                             <article class="featured__card swiper-slide">
-                                <img src="{{ url_for('get_image', filename='featured/' + featured.filename) }}" alt="image" class="featured__img">
+                                <img src="{{ url_for('get_image2', filename='' + featured.filename) }}" alt="image" class="featured__img">
                                 <h2 class="featured__title">{{ featured.title }}</h2>
                                 <div class="featured__prices">
                                     <span class="featured__discount"></span>
@@ -230,25 +230,25 @@
         <!-- ==================== DISCOUNT ==================== -->
         <section class="new section" id="new">
             <div class="discount__container container grid">
+                {% for discount in discounts %}
                 <div class="discount__data">
+                    
                     <h2 class="discount__title section__title">
                         О <span style="color: red;">R</span>ed<span style="color: red;">l</span>ine
                     </h2>
+                
                     <p class="discount__description">
-                        Redline - это компания, которая создает дизайн, 
-                        логотипы и сайты для любого бизнеса. 
-                        Мы знаем, как сделать ваш визуальный образ уникальным и привлекательным, 
-                        чтобы выделяться среди конкурентов.
+                        {{ discount.description }}
                     </p>
 
                     <a href="#" class="button" id="discount-button">Shop Now</a>
                 </div>
 
                 <div class="discount__images">
-                    <img src="{{ url_for('static', filename='images/discount_image1.png') }}" alt="image" class="discount__img-1">
-                    <img src="{{ url_for('static', filename='images/discount_image2.png') }}" alt="image" class="discount__img-2">
+                    <img src="{{ url_for('get_image', filename='discount/' + discount.image1) }}" alt="image" class="discount__img-1">
+                    <img src="{{ url_for('get_image', filename='discount/' + discount.image2) }}" alt="image" class="discount__img-2">
                 </div>
-
+                {% endfor %}
             </div>
         </section>
 
@@ -264,7 +264,7 @@
                     <div class="swiper-wrapper">
                     {% for work in works %}
                         <a href="#" class="new__card swiper-slide">
-                            <img src="{{ url_for('get_image', filename='works/' + work.filename) }}" alt="image" class="new__img">
+                            <img src="{{ url_for('get_image2', filename='' + work.filename) }}" alt="image" class="new__img">
 
                             <div>
                                 <h2 class="new__title">{{ work.title }}</h2>
@@ -288,7 +288,7 @@
                     <div class="swiper-wrapper">
                     {% for work in works|sort(attribute='filename', reverse=True) %}
                         <a href="#" class="new__card swiper-slide">
-                            <img src="{{ url_for('get_image', filename='works/' + work.filename) }}" alt="image" class="new__img">
+                            <img src="{{ url_for('get_image2', filename='' + work.filename) }}" alt="image" class="new__img">
 
                             <div>
                                 <h2 class="new__title">{{ work.title }}</h2>
@@ -345,7 +345,7 @@
                     <div class="swiper-wrapper">
                     {% for employee in employees %}
                         <article class="testimonial__card swiper-slide">
-                            <img src="{{ url_for('get_image', filename='employee/' + employee.filename) }}" alt="image" class="testimonial__img">
+                            <img src="{{ url_for('get_image2', filename='' + employee.filename) }}" alt="image" class="testimonial__img">
 
                             <h2 class="testimonial__title">{{ employee.title }}</h2>
                             <p class="testimonial__description">{{ employee.description }}</p>

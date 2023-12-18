@@ -1,0 +1,93 @@
+{% extends 'admin_base.html' %}
+
+{% block title %}Main Images Admin{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write Main Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #e74c3c;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Work</h1>
+    <h3>Параметры изображений</h3>
+    <ul>
+        <li>500 x 724 - Общий размер картинки, после добавлени теней</li>
+        <li>15 - Размер тени (Canva)</li>
+        <li>40 – Угол поворота (Canva)</li>
+        <li>5 – Макс. кол-во звезд</li>
+    </ul>
+    <form action="{{ url_for('admin_end_work') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <input type="text" name="title" placeholder="Название" required>
+        <input type="text" name="discount" placeholder="Цена со скидкой" required>
+        <input type="text" name="price" placeholder="Цена без скидки" required>
+        <input type="number" name="stars" placeholder="Звезды" required>
+        <button type="submit">Write</button>
+    </form>
+
+    <ul>
+        {% for work in end_work_items %}
+            <li>
+                <img src="{{ url_for('get_image2', filename='' + work.filename) }}" alt="{{ work.filename }} thumbnail" style="max-width: 50px; max-height: 50px;">
+                {{ work.title }}
+                <a href="{{ url_for('delete_end_work', end_work_id=work.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <p><a href="{{ url_for('index') }}">Back to Site</a></p>
+</body>
+</html>
+{% endblock %}
