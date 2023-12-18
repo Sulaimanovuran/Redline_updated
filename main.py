@@ -340,7 +340,7 @@ def submit_form_bot():
         try:
             phone = request.form['phone']
             message = request.form['message']
-            chat_id = '1022475729'
+            chat_id = '-4093013396'
             
             # Отправка данных в телеграм
             send_to_telegram(chat_id, f'Новая заявка:\nтел:{phone}\nсообщение:{message}')
@@ -355,7 +355,7 @@ def consult_form_bot():
     if request.method == 'POST':
         try:
             phone = request.form['phone']
-            chat_id = '1022475729'
+            chat_id = '-4093013396'
             
             # Отправка данных в телеграм
             send_to_telegram(chat_id, f'Новая заявка на консультацию:\nтел:{phone}')
