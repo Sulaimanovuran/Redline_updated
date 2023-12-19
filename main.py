@@ -1,6 +1,7 @@
 from flask import Flask, render_template, send_from_directory, request, redirect, url_for, flash
 import os
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 import telebot
 
 app = Flask(__name__, static_url_path='/static')
@@ -12,6 +13,7 @@ bot_token = '6926337764:AAFHR2riRBsBtItfc5M_fC-C92_mtuUX5g4'
 bot = telebot.TeleBot(bot_token)
 
 db=SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 class MainImages(db.Model):
@@ -304,6 +306,7 @@ def index():
     employees = Employee.query.all()
     main_texts = MainText.query.all()
     discounts = Discount.query.all()
+    db.session.commit()
     return render_template('index.html', image_names=image_names, featureds=featureds, works=works, employees=employees, main_texts=main_texts, discounts=discounts) #['main-image1.png','main-image2.png','main-image3.png','main-image4.png']
 
 @app.route('/images/<path:filename>')
